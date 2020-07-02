@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import root.entity.ListE;
 import root.repository.ListRepository;
 import root.repository.TaskRepository;
@@ -24,6 +23,29 @@ public class ListController {
         model.addAttribute("lists",lists);
 
         return "index";
+    }
+
+    public static class Greeting {
+
+        private long id;
+        private String content;
+
+        public long getId() {
+            return id;
+        }
+
+        public void setId(long id) {
+            this.id = id;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
     }
 }
 
