@@ -5,9 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 import root.entity.ListE;
+import root.entity.TaskE;
 import root.repository.ListRepository;
 import root.repository.TaskRepository;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ListController {
@@ -25,27 +29,24 @@ public class ListController {
         return "index";
     }
 
-    public static class Greeting {
+    @RequestMapping(value = {"/list/{id}"}, method = RequestMethod.GET)
+    public String getIndex(Model model, @PathVariable long id){
+        Map <Long, TaskE> lists = getLists();
 
-        private long id;
-        private String content;
+        model.addAttribute("lists", lists.values());
+        model.addAttribute("currentList", lists.get(null));
 
-        public long getId() {
-            return id;
+        return "list";
+    }
+
+    private Map<Long, TaskE> getLists(){
+        Map<Long, TaskE> result = new HashMap<>();
+        Iterable<TaskE> lists = taskRepository.findAll();
+
+        for (TaskE entity: lists){
+            result.put(entity.getId(), entity);
         }
-
-        public void setId(long id) {
-            this.id = id;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
+        return result;
     }
 }
 
