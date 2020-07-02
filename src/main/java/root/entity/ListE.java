@@ -1,24 +1,19 @@
 package root.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import  javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-public class Category {
+public class ListE {
     @Id
     @GeneratedValue
     private  Long id;
     private  String name;
 
-    public Category(){
+    public ListE(){
     }
 
-    public Category(String name){
-        this(null, name);
-    }
-
-    public  Category(Long id, String name){
+    public ListE(Long id, String name){
         this.id = id;
         this.name = name;
     }
@@ -38,7 +33,16 @@ public class Category {
         return name;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "list")
+    private Set<TaskE> tasks;
 
+    public Set<TaskE> getTask() {
+        return tasks;
+    }
+
+    public void setTask(Set<TaskE> tasks) {
+        this.tasks = tasks;
+    }
 
 
 }

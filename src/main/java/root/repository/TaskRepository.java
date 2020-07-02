@@ -1,7 +1,8 @@
 package root.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import root.entity.Task;
+import root.entity.TaskE;
 
-public interface TaskRepository extends CrudRepository<Task, Long> {
+public interface TaskRepository extends CrudRepository<TaskE, Long> {
+
 }

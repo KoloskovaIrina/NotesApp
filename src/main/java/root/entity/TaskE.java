@@ -6,7 +6,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Entity
-public class Task {
+public class TaskE {
     @Id
     @GeneratedValue
     private Long id;
@@ -16,11 +16,10 @@ public class Task {
     private  Date date;
     private  Boolean done;
 
-    public Task(){
+    public TaskE(){
     }
 
-
-    public  Task(Long id, Long parentId, String title,String description, Date date, Boolean done){
+    public TaskE(Long id, Long parentId, String title, String description, Date date, Boolean done){
         this.id = id;
         this.parentId = parentId;
         this.title = title;
@@ -76,6 +75,18 @@ public class Task {
 
     public Date getDate(){
         return date;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "listId", nullable = false)
+    private ListE list;
+
+    public ListE getList() {
+        return list;
+    }
+
+    public void setList(ListE list) {
+        this.list = list;
     }
 
 
