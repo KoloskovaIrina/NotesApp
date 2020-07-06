@@ -24,8 +24,8 @@ public class TaskE {
     public TaskE(){
     }
 
-    public TaskE(long parent_id, String title) {
-        this(null, parent_id, title, "", false, null, null, null);
+    public TaskE(long parentId, String title) {
+        this(null, parentId, title, null, false, null, null, null);
 
         LocalDateTime currentDataTime = LocalDateTime.now();
         this.createDate = Date.from(currentDataTime.atZone(ZoneId.systemDefault()).toInstant());

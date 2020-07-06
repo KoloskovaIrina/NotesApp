@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TaskRepository extends CrudRepository<TaskE, Long> {
     List<TaskE> findAll();
+    void deleteById(long id);
+    TaskE findById(long id);
 }
