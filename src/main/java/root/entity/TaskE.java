@@ -13,19 +13,35 @@ public class TaskE {
     private Long parentId;
     private String title;
     private String description;
-    private  Date date;
     private  Boolean done;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private  Date date;
 
     public TaskE(){
     }
 
-    public TaskE(Long id, Long parentId, String title, String description, Date date, Boolean done){
+    public TaskE(long parent_id, String title) {
+        this(null, parent_id, title, "", false, null, null, null);
+
+        LocalDateTime currentDataTime = LocalDateTime.now();
+        this.createDate = Date.from(currentDataTime.atZone(ZoneId.systemDefault()).toInstant());
+        this.updateDate = createDate;
+    }
+
+
+    public TaskE(Long id, Long parentId, String title, String description,  Boolean done, Date createDate, Date updateDate, Date date){
         this.id = id;
         this.parentId = parentId;
         this.title = title;
         this.description = description;
-        this.date = date;
         this.done = done;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.date = date;
     }
 
 
@@ -75,18 +91,6 @@ public class TaskE {
 
     public Date getDate(){
         return date;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "listId", nullable = false)
-    private ListE list;
-
-    public ListE getList() {
-        return list;
-    }
-
-    public void setList(ListE list) {
-        this.list = list;
     }
 
 

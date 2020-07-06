@@ -16,34 +16,25 @@ import java.util.Map;
 @Controller
 public class ListController {
     @Autowired
-    private ListRepository listRepository;
-    @Autowired
-    private TaskRepository taskRepository;
+    private ListRepository listRep;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model){
-        Iterable<ListE> lists = listRepository.findAll();
-
-        model.addAttribute("lists",lists);
-
-        return "index";
-    }
-
-    @RequestMapping(value = {"/list/{id}"}, method = RequestMethod.GET)
-    public String getIndex(Model model, @PathVariable long id){
-        Map <Long, TaskE> lists = getLists();
+        Map<Long, ListE> lists = getLists();
 
         model.addAttribute("lists", lists.values());
         model.addAttribute("currentList", lists.get(null));
 
-        return "list";
+        return "index";
     }
 
-    private Map<Long, TaskE> getLists(){
-        Map<Long, TaskE> result = new HashMap<>();
-        Iterable<TaskE> lists = taskRepository.findAll();
 
-        for (TaskE entity: lists){
+
+    private Map<Long, ListE> getLists(){
+        Map<Long, ListE> result = new HashMap<>();
+        Iterable<ListE> lists = listRep.findAll();
+
+        for (ListE entity: lists) {
             result.put(entity.getId(), entity);
         }
         return result;

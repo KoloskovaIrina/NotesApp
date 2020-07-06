@@ -5,34 +5,32 @@
     <title>Notes</title>
     <style>
         body {
-        background-color: #FAEBD7;
+        background-color: #00FFFF;
         }
     </style>
 </head>
 <body>
-<table align="center" rules ="rows" style = "width:60%;">
+<table align="center" rules ="rows" style = "width:80%;">
     <tr>
         <td>
-            <table border="1"  bgcolor="#00BFFF" cellpadding="10" style="width:100%; border-radius:5px;">
+            <table border="1"  bgcolor="#87CEFA" cellpadding="20" style="width:100%; ">
                 <tr>
                     <td align="center" colspan="2">
                         <font ><h1>Заметки</h1></font>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width:30%" bgcolor="#00FFFF">
+                    <td style="width:20%" bgcolor="#FFFFFF">
                         <div th:each="list: ${lists}">
-                            <a th:href=@{/index} th:utext="${list.getName()}"></a>
+                            <a th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
                         </div>
-
-
-                        <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
-                            <p><input type="submit" value="Добавить" /> </p>
+                        <form action="#" th:action="@{/addList}" th:object="${addList}" method="post">
+                            <p><input type="submit" value="+" /> </p>
                         </form>
 
 
                     </td>
-                    <td bgcolor="#00FFFF">
+                    <td bgcolor="#FFFFFF">
                         <p></p>
                     </td>
                 </tr>

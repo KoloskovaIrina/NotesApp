@@ -13,6 +13,10 @@ public class ListE {
     public ListE(){
     }
 
+    public ListE(String name) {
+        this (null, name);
+    }
+
     public ListE(Long id, String name){
         this.id = id;
         this.name = name;
@@ -31,17 +35,6 @@ public class ListE {
 
     public  String getName(){
         return name;
-    }
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "list")
-    private Set<TaskE> tasks;
-
-    public Set<TaskE> getTask() {
-        return tasks;
-    }
-
-    public void setTask(Set<TaskE> tasks) {
-        this.tasks = tasks;
     }
 
 

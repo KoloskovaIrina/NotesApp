@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Getting Started: Handing Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <meta charset="UTF-8">
+    <title>Notes|add</title>
     <style>
         body {
         background-color: #00FFFF;
@@ -14,7 +13,7 @@
 <table align="center" rules ="rows" style = "width:80%;">
     <tr>
         <td>
-            <table border="1"  bgcolor="#87CEFA" cellpadding="20" style="width:100%; ">
+            <table border="1"  bgcolor="#FFFFFF" cellpadding="10" style="width:100%; ">
                 <tr>
                     <td align="center" colspan="2">
                         <font ><h1>Заметки</h1></font>
@@ -25,18 +24,13 @@
                         <div th:each="list: ${lists}">
                             <a th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
                         </div>
-                        <form action="#" th:action="@{/addList}" th:object="${addList}" method="post">
-                            <p><input type="submit" value="+" /> </p>
-                        </form>
-
-
                     </td>
                     <td bgcolor="#FFFFFF">
                         <p></p>
-                        <h1>Result</h1>
-                        <p th:text="'id: ' + ${greeting.id}" />
-                        <p th:text="'content: ' + ${greeting.content}" />
-                        <a href="/greeting">Submit another message</a>
+                        <form action="#" th:action="@{/addlist}" th:object="${addlist}" method="post">
+                            <p>Название: <input type="text" th:field="*{name}" /></p>
+                            <p><input type="Submit" value="Добавить" /> </p>
+                        </form>
                     </td>
                 </tr>
             </table>
