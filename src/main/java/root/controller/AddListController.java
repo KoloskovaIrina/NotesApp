@@ -21,6 +21,7 @@ public class AddListController {
         return "addList";
     }
 
+
     @RequestMapping(value={"/addList"}, method=RequestMethod.POST)
     public String listSubmit(@ModelAttribute ListE addList) {
         if(StringUtils.hasText(addList.getName())){

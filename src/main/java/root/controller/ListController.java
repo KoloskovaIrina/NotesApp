@@ -25,19 +25,14 @@ public class ListController {
     @RequestMapping(value ={"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model){
         Map<Long, ListE> lists = getLists();
-        //Iterable<TaskE> tasks = taskRepository.findAll();
         model.addAttribute("lists", lists.values());
         model.addAttribute("currentList", lists.get(null));
-       // model.addAttribute("tasks",tasks);
         return "index";
     }
 
     @RequestMapping(value = {"/index/{id}"}, method = RequestMethod.GET)
     public String getIndex(Model model, @PathVariable Long id){
         Map<Long, ListE> lists = getLists();
-
-        //Optional<ListE> list = listRepository.findById(id);
-        //Iterable<TaskE> tasks = list.getTask();
 
         model.addAttribute("lists", lists.values());
         model.addAttribute("currentList", lists.get(null));

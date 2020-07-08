@@ -17,6 +17,7 @@ public class TaskE {
     private Date date;
 
     public TaskE(){
+
     }
 
     public TaskE(Long parentId, String title){

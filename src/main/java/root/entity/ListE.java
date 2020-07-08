@@ -11,7 +11,9 @@ public class ListE {
     private Long id;
     private String name;
 
-    public ListE() {}
+    public ListE() {
+
+    }
 
     public ListE(String name) {
         this (null, name);

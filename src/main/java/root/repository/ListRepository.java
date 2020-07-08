@@ -5,5 +5,6 @@ import root.entity.ListE;
 
 public interface ListRepository extends CrudRepository<ListE, Long> {
 
+
 }
 
