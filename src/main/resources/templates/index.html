@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Notes</title>
-    <style>
-        body {
-        background-color: #00FFFF;
-        }
-    </style>
+    <link rel = "stylesheet" href="/assets/css/style.css">
 </head>
-<body>
-<table align="center" rules ="rows" style = "width:80%;">
-    <tr>
-        <td>
-            <table border="1"  bgcolor="#87CEFA" cellpadding="20" style="width:100%; ">
-                <tr>
-                    <td align="center" colspan="2">
-                        <font ><h1>Заметки</h1></font>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:20%" bgcolor="#FFFFFF">
-                        <div th:each="list: ${lists}">
-                            <a th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
-                        </div>
-                        <form action="#" th:action="@{/addList}" th:object="${addList}" method="post">
-                            <p><input type="submit" value="+" /> </p>
-                        </form>
-
-
-                    </td>
-                    <td bgcolor="#FFFFFF">
-                        <p></p>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+<body >
+<div  >
+    <div  >
+        <div  >
+            <span >ЗАМЕТКИ</span>
+        </div>
+        <div >
+            <a th:href="@{/addList}"><button >Добавить категорию</button></a>
+        </div>
+    </div>
+    <table align="center" border="1" cellpadding="1" cellspacing="1" style="color:blue; width:800px">
+        <tbody>
+        <tr>
+            <td colspan="2">Меню</td>
+        </tr>
+        <tr>
+            <td>Категории</td>
+            <td>Задачи</td>
+        </tr>
+        <tr>
+            <td><div th:each="list: ${lists}">
+                <!--<a th:href=@{/index} th:utext="${list.getName()}"></a>-->
+                <a th:href="@{/index/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
+            </div>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
+
 

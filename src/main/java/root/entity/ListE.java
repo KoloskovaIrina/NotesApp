@@ -5,24 +5,25 @@ import java.util.Set;
 
 @Entity
 public class ListE {
+
     @Id
     @GeneratedValue
-    private  Long id;
-    private  String name;
+    private Long id;
+    private String name;
 
-    public ListE(){
-    }
+    public ListE() {}
 
     public ListE(String name) {
         this (null, name);
     }
 
-    public ListE(Long id, String name){
+    public ListE(Long id, String name) {
         this.id = id;
         this.name = name;
     }
-    public  void  setId(Long uid){
-        this.id = uid;
+
+    public void setId(Long id){
+        this.id = id;
     }
 
     public Long getId(){
@@ -33,9 +34,17 @@ public class ListE {
         this.name = name;
     }
 
-    public  String getName(){
+    public String getName(){
         return name;
     }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "list")
+    private Set<TaskE> tasks;
 
+    public Set<TaskE> getTask() {
+        return tasks;
+    }
 
+    public void setTask(Set<TaskE> tasks) {
+        this.tasks = tasks;
+    }
 }

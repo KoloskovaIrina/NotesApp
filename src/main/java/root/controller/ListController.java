@@ -2,6 +2,7 @@ package root.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,29 +13,41 @@ import root.repository.ListRepository;
 import root.repository.TaskRepository;
 import java.util.HashMap;
 import java.util.Map;
+import antlr.StringUtils.*;
 
 @Controller
 public class ListController {
     @Autowired
-    private ListRepository listRep;
+    private ListRepository listRepository;
+    @Autowired
+    private TaskRepository taskRepository;
 
-    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    @RequestMapping(value ={"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model){
         Map<Long, ListE> lists = getLists();
-
+        //Iterable<TaskE> tasks = taskRepository.findAll();
         model.addAttribute("lists", lists.values());
         model.addAttribute("currentList", lists.get(null));
-
+       // model.addAttribute("tasks",tasks);
         return "index";
     }
 
+    @RequestMapping(value = {"/index/{id}"}, method = RequestMethod.GET)
+    public String getIndex(Model model, @PathVariable Long id){
+        Map<Long, ListE> lists = getLists();
 
+        //Optional<ListE> list = listRepository.findById(id);
+        //Iterable<TaskE> tasks = list.getTask();
 
-    private Map<Long, ListE> getLists(){
+        model.addAttribute("lists", lists.values());
+        model.addAttribute("currentList", lists.get(null));
+        return "index";
+    }
+
+    private  Map<Long, ListE> getLists(){
         Map<Long, ListE> result = new HashMap<>();
-        Iterable<ListE> lists = listRep.findAll();
-
-        for (ListE entity: lists) {
+        Iterable<ListE> lists = listRepository.findAll();
+        for(ListE entity: lists){
             result.put(entity.getId(), entity);
         }
         return result;

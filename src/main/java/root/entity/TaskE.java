@@ -1,9 +1,9 @@
 package root.entity;
 
 import javax.persistence.*;
-import  java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
+
+
 
 @Entity
 public class TaskE {
@@ -13,37 +13,23 @@ public class TaskE {
     private Long parentId;
     private String title;
     private String description;
-    private  Boolean done;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    private  Date date;
+    private Boolean done;
+    private Date date;
 
     public TaskE(){
     }
 
-    public TaskE(long parentId, String title) {
-        this(null, parentId, title, null, false, null, null, null);
-
-        LocalDateTime currentDataTime = LocalDateTime.now();
-        this.createDate = Date.from(currentDataTime.atZone(ZoneId.systemDefault()).toInstant());
-        this.updateDate = createDate;
+    public TaskE(Long parentId, String title){
+        this(null, parentId, title, null, false, null);
     }
-
-
-    public TaskE(Long id, Long parentId, String title, String description,  Boolean done, Date createDate, Date updateDate, Date date){
+    public TaskE(Long id, Long parentId, String title, String description, Boolean done, Date date) {
         this.id = id;
         this.parentId = parentId;
         this.title = title;
         this.description = description;
         this.done = done;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
         this.date = date;
     }
-
 
     public void setId(Long id){
         this.id = id;
@@ -93,5 +79,15 @@ public class TaskE {
         return date;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "listId", nullable = false)
+    private ListE list;
 
+    public ListE getList() {
+        return list;
+    }
+
+    public void setList(ListE list) {
+        this.list = list;
+    }
 }
