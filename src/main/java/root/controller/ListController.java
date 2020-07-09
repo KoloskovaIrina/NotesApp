@@ -47,6 +47,12 @@ public class ListController {
         }
         return result;
     }
+
+    @RequestMapping(value = {"/index/{id}/delete"})
+    public String removeList(@PathVariable Long id) {
+        listRepository.deleteById(id);
+        return "redirect:/index";
+    }
 }
 
 

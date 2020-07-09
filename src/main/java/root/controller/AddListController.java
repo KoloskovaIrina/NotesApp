@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import root.entity.ListE;
 import root.repository.ListRepository;
 
-
+@Controller
 public class AddListController {
     @Autowired
     private ListRepository listRepository;
@@ -29,6 +29,8 @@ public class AddListController {
         }
         return "redirect:/";
     }
+
+
 
 }
 
