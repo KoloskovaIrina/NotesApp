@@ -19,34 +19,46 @@
             </td>
         </tr>
         <tr>
-            <td bgcolor="#E0FFFF" colspan="2">Меню</td>
-        </tr>
-        <tr>
             <td bgcolor="#E0FFFF">Категории</td>
             <td bgcolor="#E0FFFF">Задачи</td>
         </tr>
+
         <tr>
-            <td style="width:50%" >
+            <td style="width:30%" >
 
                 <div th:each="list: ${lists}">
-                    <!--<a th:href=@{/index} th:utext="${list.getName()}"></a>-->
-                    <a th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a></li>
-
-                    <form align="right"  action="#" th:action="@{/index/{id}/delete (id=${list.getId()})}">
-                        <button type="submit" >-</button>
+                    <a  th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
+                    <a></a>
+                    <a th:href="@{/index/{id}/updateList (id=${list.getId()})}">
+                        <button type="button">Изменить</button>
+                    </a>
+                    <form align="right"  action="#" th:action="@{/list/{id}/delete (id=${list.getId()})}">
+                        <button type="submit" >Удалить</button>
                      </form>
                 </div>
 
             </td>
-            <td> </td>
+            <td>
+                <div>
+                <a th:utext="${currentList.getName()}"></a>
+
+                <div th:each="task: ${tasks}">
+                    <a th:href="@{/task/{id}(uid=${task.getId()})}" th:utext="${task.getTitle()}"></a>
+                </div>
+                </div>
+
+            </td>
         </tr>
         <tr>
             <td>
                 <div align="center">
-                <a  th:href="@{/addList}"><button>Добавить категорию</button></a>
-            </div>
+                    <a  th:href="@{/addList}"><button>Добавить категорию</button></a>
+                </div>
             </td>
             <td>
+                <div align="center">
+                    <a  th:href="@{/addTask}"><button>Добавить задачу</button></a>
+                </div>
 
             </td>
         </tr>

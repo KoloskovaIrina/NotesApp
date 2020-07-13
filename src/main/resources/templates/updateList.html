@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Изменение категории</title>
+    <link rel = "stylesheet" href="/assets/css/style.css">
+</head>
+
+<body >
+<div  align="center">
+    <div>
+        <h1>Изменение категории</h1>
+        <form action="#" th:action="@{/list/{id}/updateList}" th:object="${list}" method="post">
+            <div >
+                <p>Введите название:<input type="text" name ="name" /></p>
+                <p><input type="submit"  value="Подтвердить" /> <input type="reset"  value="Сброс" /></p>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

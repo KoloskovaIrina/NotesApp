@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Entity
 public class TaskE {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -14,6 +15,11 @@ public class TaskE {
     private String title;
     private String description;
     private Boolean done;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     public TaskE(){
@@ -21,14 +27,16 @@ public class TaskE {
     }
 
     public TaskE(Long parentId, String title){
-        this(null, parentId, title, null, false, null);
+        this(null, parentId, title, null, false, null, null, null);
     }
-    public TaskE(Long id, Long parentId, String title, String description, Boolean done, Date date) {
+    public TaskE(Long id, Long parentId, String title, String description, Boolean done, Date createDate, Date updateDate, Date date) {
         this.id = id;
         this.parentId = parentId;
         this.title = title;
         this.description = description;
         this.done = done;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
         this.date = date;
     }
 
@@ -80,15 +88,5 @@ public class TaskE {
         return date;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "listId", nullable = false)
-    private ListE list;
 
-    public ListE getList() {
-        return list;
-    }
-
-    public void setList(ListE list) {
-        this.list = list;
-    }
 }

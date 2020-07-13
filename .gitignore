@@ -1,0 +1,12 @@
+#idea
+.idea
+*.inl
+**/target/
+
+#git
+*.orig
+
+#maven
+**/dependency.txt
+*.versionsBackup
+

@@ -5,27 +5,17 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import root.entity.ListE;
+import root.entity.TaskE;
 import root.repository.ListRepository;
+import root.repository.TaskRepository;
+
 
 @ComponentScan
 @EnableAutoConfiguration
 public class Application {
     public static void main(String[] args) {
-       ConfigurableApplicationContext context = SpringApplication.run(Application.class);
-        ListRepository repository= context.getBean(ListRepository.class);
-        /*repository.save(new ListE(1L,"Общие"));
-        repository.save(new ListE(2L,"Дом"));
-        repository.save(new ListE(3L,"Работа"));
-        repository.save(new ListE(4L,"Семья"));
-        repository.save(new ListE(5L,"Друзья"));
-        repository.deleteAll();
+     SpringApplication.run(Application.class);
 
-        Iterable<ListE> lists = repository.findAll();
-
-        for (ListE entity: lists){
-            System.out.println(entity.getName());
-        }
-        SpringApplication.run(Application.class, args);
-        context.close();*/
     }
+
 }
