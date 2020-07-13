@@ -14,7 +14,10 @@ import root.repository.TaskRepository;
 @EnableAutoConfiguration
 public class Application {
     public static void main(String[] args) {
-     SpringApplication.run(Application.class);
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class);
+
+        ListRepository list = context.getBean(ListRepository.class);
+        TaskRepository task = context.getBean(TaskRepository.class);
 
     }
 

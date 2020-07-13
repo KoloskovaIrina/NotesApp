@@ -12,6 +12,10 @@ public class ListE {
     private Long id;
     private String name;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "list", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<TaskE> task = new HashSet<>();
+
     public ListE() {
 
     }

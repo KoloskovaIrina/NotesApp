@@ -2,7 +2,7 @@ package root.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -21,6 +21,11 @@ public class TaskE {
     private Date updateDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId", nullable = false)
+    private ListE list;
+
 
     public TaskE(){
 
@@ -86,6 +91,19 @@ public class TaskE {
 
     public Date getDate(){
         return date;
+    }
+
+    @JsonIgnore
+    public void setList(ListE list){
+        this.list = list;
+    }
+
+    public Long getListId(){
+        return list.getId();
+    }
+
+    public String getListName(){
+        return list.getName();
     }
 
 

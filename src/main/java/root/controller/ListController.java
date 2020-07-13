@@ -37,7 +37,7 @@ public class ListController {
     }
 
     @RequestMapping(value = {"/list/{id}"}, method = RequestMethod.GET)
-    public String getIndex(Model model, @PathVariable long id){
+    public String getIndex(Model model, @PathVariable Long id){
         Map<Long, ListE> lists = getLists();
         Map<Long, TaskE> tasks = getTasks(id);
 
@@ -52,6 +52,7 @@ public class ListController {
         Map<Long, ListE> result = new HashMap<>();
         Iterable<ListE> lists = listRepository.findAll();
         result.put(null, new ListE("Все"));
+
         for(ListE entity: lists){
             result.put(entity.getId(), entity);
         }

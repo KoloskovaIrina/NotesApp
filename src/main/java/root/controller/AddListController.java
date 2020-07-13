@@ -28,12 +28,10 @@ public class AddListController {
 
     @RequestMapping(value={"/addList"}, method=RequestMethod.POST)
     public String listSubmit(@ModelAttribute ListE addList, Model model) {
-        if(StringUtils.hasText(addList.getName())){
-            ListE result = listRepository.save(new ListE(addList.getName()));
-            Long id = result.getId();
-            return  "redirect:/list" + id;
+        if(StringUtils.hasText(addList.getName())) {
+            listRepository.save(new ListE(addList.getName()));
         }
-        return "redirect:/list";
+        return "redirect:/";
     }
 
 
