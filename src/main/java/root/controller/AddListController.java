@@ -13,7 +13,7 @@ import root.repository.ListRepository;
 import root.repository.TaskRepository;
 
 @Controller
-public class AddController {
+public class AddListController {
     @Autowired
     private ListRepository listRepository;
     @Autowired
@@ -37,18 +37,6 @@ public class AddController {
     }
 
 
-    @RequestMapping(value = "/list/addTask", method = RequestMethod.GET)
-    public String taskForm(Model model) {
-        model.addAttribute("addTask", new TaskE());
-        return "addTask";
-    }
-
-    @RequestMapping(value = {"/list/addTask"}, method = RequestMethod.POST)
-    public String taskSubmit(@ModelAttribute TaskE addTask, Model model){
-
-        taskRepository.save(new TaskE(addTask.getParentId(), addTask.getTitle()));
-        return "redirect:/list/" + addTask.getParentId();
-    }
 
 
 

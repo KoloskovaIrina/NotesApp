@@ -43,7 +43,7 @@
                 <a th:utext="${currentList.getName()}"></a>
 
                 <div th:each="task: ${tasks}">
-                    <a th:href="@{/task/{id}(uid=${task.getId()})}" th:utext="${task.getTitle()}"></a>
+                    <a th:href="@{/task/{id}(id=${task.getId()})}" th:utext="${task.getTitle()}"></a>
                 </div>
                 </div>
 
@@ -57,7 +57,7 @@
             </td>
             <td>
                 <div align="center">
-                    <a  th:href="@{/addTask}"><button>Добавить задачу</button></a>
+                    <a  th:href="@{/addTask}"><button>Добавить категорию</button></a>
                 </div>
 
             </td>
