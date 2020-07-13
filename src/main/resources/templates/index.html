@@ -9,7 +9,7 @@
 <body>
 <div >
 
-    <table align="center" border="1" bgcolor="#FFFFFF" cellpadding="1" cellspacing="1" style=" width:70%;">
+    <table align="center" border="1" bgcolor="#FFFFFF" cellpadding="1" cellspacing="1" style=" width:80%;">
         <tbody>
         <tr>
             <td bgcolor="#E0FFFF" colspan="2">
@@ -23,8 +23,9 @@
             <td bgcolor="#E0FFFF">Задачи</td>
         </tr>
 
+
         <tr>
-            <td style="width:30%" >
+            <td width="250" >
 
                 <div th:each="list: ${lists}">
                     <a  th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
@@ -32,19 +33,21 @@
                     <a th:href="@{/index/{id}/updateList (id=${list.getId()})}">
                         <button type="button">Изменить</button>
                     </a>
-                    <form align="right"  action="#" th:action="@{/list/{id}/delete (id=${list.getId()})}">
+                    <form align="right"  action="#" th:action="@{/list/{id}/deleteList (id=${list.getId()})}">
                         <button type="submit" >Удалить</button>
                      </form>
                 </div>
 
             </td>
-            <td>
-                <div>
-                <a th:utext="${currentList.getName()}"></a>
 
+            <td >
+                <table border="1" width="70%" align="center">
+                    <td align="center">
+                        <h th:utext="${currentList.getName()}"></h>
+                    </td>
+                </table>
                 <div th:each="task: ${tasks}">
-                    <a th:href="@{/task/{id}(id=${task.getId()})}" th:utext="${task.getTitle()}"></a>
-                </div>
+                        <a th:href="@{/task/{id}(id=${task.getId()})}" th:utext="${task.getTitle()}"></a>
                 </div>
 
             </td>
