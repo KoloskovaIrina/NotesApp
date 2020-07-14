@@ -39,11 +39,13 @@ public class ListController {
     @RequestMapping(value = {"/list/{id}"}, method = RequestMethod.GET)
     public String getIndex(Model model, @PathVariable Long id){
         Map<Long, ListE> lists = getLists();
-        Map<Long, TaskE> tasks = getTasks(id);
+
+        ListE list = listRepository.findById(id).get();
+        List<TaskE> tasks = taskRepository.findByList(list);
 
         model.addAttribute("lists", lists.values());
         model.addAttribute("currentList", lists.get(id));
-        model.addAttribute("tasks", tasks.values());
+        model.addAttribute("tasks", tasks);
         return "index";
     }
 
@@ -78,14 +80,20 @@ public class ListController {
 
     @RequestMapping(value = {"/task/{taskId}/deleteTask"})
     public String removeTask(@PathVariable Long taskId) {
-        TaskE task = taskRepository.findById((long)taskId);
+        TaskE task = taskRepository.findById((long)taskId).get();
         Long id = task.getParentId();
         taskRepository.deleteById(taskId);
-        return "redirect:/list/" + id;
+        return "redirect:/";
     }
 
 
+
 }
+
+
+
+
+
 
 
 

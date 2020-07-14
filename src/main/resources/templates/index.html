@@ -9,12 +9,12 @@
 <body>
 <div >
 
-    <table align="center" border="1" bgcolor="#FFFFFF" cellpadding="1" cellspacing="1" style=" width:80%;">
+    <table align="center" border="1" bgcolor="#FFFFFF" cellpadding="1" cellspacing="1" width="1067">
         <tbody>
         <tr>
             <td bgcolor="#E0FFFF" colspan="2">
                 <img align="left" src="/assets/images/zzz.jpg">
-                 <img align="center" src="/assets/images/notes.jpg">
+                <img align="center" src="/assets/images/notes.jpg">
                 <img align="right" src="/assets/images/zzz.jpg">
             </td>
         </tr>
@@ -25,7 +25,7 @@
 
 
         <tr>
-            <td width="250" >
+            <td width="350" >
 
                 <div th:each="list: ${lists}">
                     <a  th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
@@ -35,7 +35,7 @@
                     </a>
                     <form align="right"  action="#" th:action="@{/list/{id}/deleteList (id=${list.getId()})}">
                         <button type="submit" >Удалить</button>
-                     </form>
+                    </form>
                 </div>
 
             </td>
@@ -46,9 +46,14 @@
                         <h th:utext="${currentList.getName()}"></h>
                     </td>
                 </table>
-                <div th:each="task: ${tasks}">
-                        <a th:href="@{/task/{id}(id=${task.getId()})}" th:utext="${task.getTitle()}"></a>
-                </div>
+                <ul   th:each="task: ${tasks}">
+                    <li ><p th:href="@{/task/{id}(id=${task.getId()})}" th:utext="${task.getTitle()}"></p></li>
+
+                    <form   action="#" th:action="@{/task/{id}/deleteTask (id=${task.getId()})}">
+                        <button type="submit" >Удалить</button>
+                    </form>
+
+                </ul>
 
             </td>
         </tr>
@@ -60,7 +65,7 @@
             </td>
             <td>
                 <div align="center">
-                    <a  th:href="@{/addTask}"><button>Добавить категорию</button></a>
+                    <a  th:href="@{/addTask/{id}(id=${currentList.getId()})}"><button>Добавить задачу</button></a>
                 </div>
 
             </td>
@@ -70,5 +75,10 @@
 </div>
 </body>
 </html>
+
+
+
+
+
 
 

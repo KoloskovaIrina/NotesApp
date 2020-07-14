@@ -17,15 +17,15 @@ public class UpdateController {
 
     @GetMapping(value={"/list/{id}/updateList"})
     public String updateListForm(Model model, @PathVariable long id) {
-        ListE list = listRepository.findById(id);
+        ListE list = listRepository.findById(id).get();
         model.addAttribute("list", list);
         return "/updateList";
     }
 
     @RequestMapping(value={"/list/{id}/updateList"}, method=RequestMethod.POST)
     public String updatelistSubmit(Model model, @PathVariable long id, @ModelAttribute("list") ListE list) {
-       // listE listToUpdate = listRepository.findById(id);
-       // listToUpdate.setName(list.getName());
+        // listE listToUpdate = listRepository.findById(id);
+       //  listToUpdate.setName(list.getName());
        // listRepository.save(listToUpdate);
 
         return "redirect:/index/" + id;

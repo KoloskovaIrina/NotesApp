@@ -23,12 +23,10 @@ public class TaskE {
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoryId", nullable = false)
+    @JoinColumn(name = "listId", nullable = false)
     private ListE list;
 
-
     public TaskE(){
-
     }
 
     public TaskE(Long parentId, String title){
@@ -49,7 +47,7 @@ public class TaskE {
         this.id = id;
     }
 
-    public long getId(){
+    public Long getId(){
         return id;
     }
 
@@ -57,7 +55,7 @@ public class TaskE {
         this.parentId = parentId;
     }
 
-    public long getParentId(){
+    public Long getParentId(){
         return parentId;
     }
 

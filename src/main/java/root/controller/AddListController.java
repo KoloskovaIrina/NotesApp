@@ -34,10 +34,5 @@ public class AddListController {
         return "redirect:/";
     }
 
-
-
-
-
 }
-
 

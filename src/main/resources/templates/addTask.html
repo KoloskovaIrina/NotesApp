@@ -12,11 +12,11 @@
         <h1>Новая задача</h1>
 
 
-        <form action="#" th:object="${addTask}" th:action="@{/addTask}"   method="post" >
+        <form action="#" th:object="${addTask}" th:action="@{/addTask}"  method="post" >
 
             <div>
-                <p>Введите название:<input type="text"  /></p>
-                <input type="hidden" name="parentId"/>
+                <p>Введите название:<input type="text"  name ="title"/></p>
+                <input type="hidden" name="parentId" th:value = "${parentId}"/>
                 <p><input type="submit"  value="Подтвердить" /> <input type="reset"  value="Сброс" /></p>
             </div>
         </form>

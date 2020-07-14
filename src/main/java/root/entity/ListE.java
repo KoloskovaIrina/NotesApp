@@ -17,7 +17,6 @@ public class ListE {
     private Set<TaskE> task = new HashSet<>();
 
     public ListE() {
-
     }
 
     public ListE(String name) {
@@ -44,7 +43,5 @@ public class ListE {
     public String getName(){
         return name;
     }
-
-
 
 }
