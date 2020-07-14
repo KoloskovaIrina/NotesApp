@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
-    <title>Изменение категории</title>
+    <title>Изменение задач</title>
     <link rel = "stylesheet" href="/assets/css/style.css">
 </head>
 
 <body >
 <div  align="center">
     <div>
-        <h1>Изменение категории</h1>
-        <form action="#"  th:object="${list}" th:action="@{/list/{id}/updateList(id=${list.getId()})}"  method="post">
+        <h1>Изменение задач</h1>
+        <form action="#"  th:object="${}" th:action="@{}"  method="post">
             <div >
                 <p>Введите название:<input type="text" name ="name" /></p>
                 <p><input type="submit"  value="Подтвердить" /> <input type="reset"  value="Сброс" /></p>
