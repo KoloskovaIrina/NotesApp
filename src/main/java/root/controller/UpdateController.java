@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import root.entity.ListE;
+import root.entity.TaskE;
 import root.repository.ListRepository;
+import root.repository.TaskRepository;
 
 import java.util.Optional;
 
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class UpdateController {
     @Autowired
     private ListRepository listRepository;
+    @Autowired
+    private TaskRepository taskRepository;
 
     @GetMapping(value={"/list/{id}/updateList"})
     public String updateListForm(Model model, @PathVariable long id) {
@@ -30,4 +34,25 @@ public class UpdateController {
         listRepository.save(listToUpdate);
         return "redirect:/list/" + id;
     }
+
+
+    @GetMapping(value = {"/task/{id}/update"})
+    public String updateTaskForm(Model model, @PathVariable long id) {
+        TaskE task = taskRepository.findById(id).get();
+        model.addAttribute("task", task);
+
+        return "/updateTask";
+    }
+
+    @RequestMapping(value = {"/task/{id}/update"}, method = {RequestMethod.POST})
+    public String updateTaskSubmit(Model model, @PathVariable long id, @ModelAttribute("task") TaskE task) {
+        TaskE taskToUpdate = taskRepository.findById(id).get();
+        taskToUpdate.setTitle(task.getTitle());
+        taskRepository.save(taskToUpdate);
+
+        return "redirect:/task/" + taskToUpdate.getParentId();
+    }
+
+
+
 }

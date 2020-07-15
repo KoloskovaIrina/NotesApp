@@ -27,20 +27,18 @@
             <td width="360" >
 
                 <div  class="box" th:each="list: ${lists}">
-                    <div class="box" align="center">
-                        <a  th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
-
+                    <div class="box" align="center" >
+                        <a  style="color:blue;"  th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
                     </div>
                     <div class="box" >
-
                     </div>
                     <div class="box" align="right" >
-                        <a th:href="@{/list/{id}/updateList (id=${list.getId()})}">
+                        <a  th:href="@{/list/{id}/updateList (id=${list.getId()})}">
                             <button  class="button button1"  type="button">Изменить</button>
                         </a>
                     </div>
                     <div class="box" >
-                        <form align="right" action="#" th:action="@{/list/{id}/deleteList (id=${list.getId()})}">
+                        <form  align="right" action="#" th:action="@{/list/{id}/deleteList (id=${list.getId()})}">
                              <button  class="button button1" type="submit" >Удалить</button>
                         </form>
                     </div>
@@ -60,7 +58,7 @@
 
                     <div class="boxx" align="center" >
                         <div class="boxx">
-                            <a th:href="@{/list/{id}/updateTask/(id=${currentList.getId()})}">
+                            <a th:href="@{/task/{id}/updateTask (id=${task.getId()})}">
                                    <button class="button button2" type="button" >Изменить</button>
                             </a>
                         </div>

@@ -10,12 +10,11 @@
 <div  align="center">
     <div>
         <h1>Изменение задач</h1>
-        <form action="#"  th:object="${}" th:action="@{}"  method="post">
-            <div >
-                <p>Введите название:<input type="text" name ="name" /></p>
-                <p><input type="submit"  value="Подтвердить" /> <input type="reset"  value="Сброс" /></p>
-            </div>
+        <form  action="#" th:object="${task}"  th:action="@{task/{id}/updateTask (id=${task.getId()})}" method="post">
+            <p>Введите название: <input type="text"  name ="title" /></p>
+            <p><input type="submit"  value="Подтвердить" /> <input type="reset"  value="Сброс" /></p>
         </form>
+
     </div>
 </div>
 </body>
