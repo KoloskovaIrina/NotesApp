@@ -6,8 +6,6 @@ body {
 
 .zz div { width:150px; display:inline-block; height: 40px; }
 
-
-
 .button {
     background-color: #00BFFF;
     border: none;
@@ -18,6 +16,7 @@ body {
     cursor: pointer;
     border-radius: 8px;
 }
+
 .button1 {
     background-color: #87CEFA;
      color: black;

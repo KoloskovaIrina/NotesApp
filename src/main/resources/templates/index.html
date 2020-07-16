@@ -2,13 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Notes</title>
+    <title>Заметки</title>
     <link rel = "stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
 <div>
-
     <table align="center" border="1" bgcolor="#FFFFFF" cellpadding="2" cellspacing="1" width="1070">
         <tbody>
         <tr>
@@ -25,7 +24,6 @@
 
         <tr>
             <td width="360" >
-
                 <div  class="box" th:each="list: ${lists}">
                     <div class="box" align="center" >
                         <a  style="color:blue;"  th:href="@{/list/{id}(id=${list.getId()})}" th:utext="${list.getName()}"></a>
@@ -43,7 +41,6 @@
                         </form>
                     </div>
                 </div>
-
             </td>
 
             <td >
@@ -65,7 +62,6 @@
                         </div>
                     </div>
 
-
                     <div class="box" align="center" >
                         <div class="box">
                             <a th:href="@{/task/{idt}/updateTask (idt=${task.getId()})}">
@@ -79,7 +75,6 @@
                         </div>
                     </div>
                 </div>
-
             </td>
         </tr>
 
@@ -89,11 +84,11 @@
                     <a  th:href="@{/addList}"><button class="button">Добавить категорию</button></a>
                 </div>
             </td>
+
             <td >
                 <div align="center">
                     <a  th:href="@{/addTask/{id}(id=${currentList.getId()})}"><button class="button">Добавить задачу</button></a>
                 </div>
-
             </td>
         </tr>
         </tbody>

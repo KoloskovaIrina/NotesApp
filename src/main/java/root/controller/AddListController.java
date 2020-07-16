@@ -22,6 +22,7 @@ public class AddListController {
     @RequestMapping(value={"/addList"}, method=RequestMethod.GET)
     public String listForm(Model model) {
         model.addAttribute("addList", new ListE());
+
         return "addList";
     }
 
@@ -31,6 +32,7 @@ public class AddListController {
         if(StringUtils.hasText(addList.getName())) {
             listRepository.save(new ListE(addList.getName()));
         }
+
         return "redirect:/";
     }
 

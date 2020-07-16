@@ -23,6 +23,7 @@ public class UpdateController {
     public String updateListForm(Model model, @PathVariable long id) {
         ListE list = listRepository.findById(id).get();
         model.addAttribute("list", list);
+
         return "/updateList";
     }
 
@@ -32,6 +33,7 @@ public class UpdateController {
         ListE listToUpdate = listRepository.findById(id).get();
         listToUpdate.setName(list.getName());
         listRepository.save(listToUpdate);
+
         return "redirect:/list/" + id;
     }
 
@@ -51,7 +53,7 @@ public class UpdateController {
         taskToUpdate.setDone(task.getDone());
         taskRepository.save(taskToUpdate);
 
-        return "redirect:/list/" + taskToUpdate.getParentId();
+        return "redirect:/";
     }
 
 

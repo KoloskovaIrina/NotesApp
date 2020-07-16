@@ -75,6 +75,7 @@ public class ListController {
     @RequestMapping(value = {"/list/{id}/deleteList"})
     public String removeList(@PathVariable Long id) {
         listRepository.deleteById(id);
+
         return "redirect:/";
     }
 
@@ -83,9 +84,9 @@ public class ListController {
         TaskE task = taskRepository.findById((long)taskId).get();
         Long id = task.getParentId();
         taskRepository.deleteById(taskId);
+
         return "redirect:/";
     }
-
 
 }
 

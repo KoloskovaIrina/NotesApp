@@ -21,10 +21,10 @@ public class AddTaskController {
     private TaskRepository taskRepository;
 
 
-
     @RequestMapping(value = "/addTask/{parentId}", method = RequestMethod.GET)
     public String taskForm(@PathVariable Long parentId, Model model) {
         model.addAttribute("parentId", parentId);
+
         return "addTask";
     }
 
@@ -34,10 +34,9 @@ public class AddTaskController {
         TaskE task = new TaskE();
         task.setTitle(addTask.getTitle());
         task.setList(list);
-
         taskRepository.save(task);
-        return "redirect:/list/" + addTask.getParentId();
 
+        return "redirect:/list/" + addTask.getParentId();
     }
 
 }

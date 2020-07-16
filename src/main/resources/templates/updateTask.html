@@ -9,17 +9,15 @@
 <body >
 <div  align="center">
     <div>
-        <h1>Изменение задач</h1>
-        <form  action="#" th:object="${task}"  th:action="@{task/{idt}/updateTask (idt=${task.getId()})}" method="post">
+        <h1>Изменение задачи</h1>
+        <form  action="#" th:object="${task}"  th:action="@{/task/{idt}/updateTask (idt=${task.getId()})}" method="post">
             <p>Введите название: <input type="text"   th:field="*{title}" /></p>
             <div >
                 <input type="checkbox" name="done" th:checked="${task.getDone()}"  id="customSwitch1">
                 <label for="customSwitch1">Выполнено</label>
             </div>
-
             <p><input type="submit"  value="Подтвердить" /> <input type="reset"  value="Сброс" /></p>
         </form>
-
     </div>
 </div>
 </body>
