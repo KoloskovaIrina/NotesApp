@@ -56,13 +56,23 @@
                 <div align="center"  th:each="task: ${tasks}">
                     <p th:href="@{/task/{id}(id=${task.getId()})}" th:utext="${task.getTitle()}"></p>
 
-                    <div class="boxx" align="center" >
-                        <div class="boxx">
-                            <a th:href="@{/task/{id}/updateTask (id=${task.getId()})}">
+                    <div class="zz"  align="center">
+                        <div class="zz" role="alert" th:if="${task.done}">
+                            Выполнена!
+                        </div>
+                        <div class="zz"  role="alert" th:unless="${task.done}">
+                            Не выполнена!
+                        </div>
+                    </div>
+
+
+                    <div class="box" align="center" >
+                        <div class="box">
+                            <a th:href="@{/task/{idt}/updateTask (idt=${task.getId()})}">
                                    <button class="button button2" type="button" >Изменить</button>
                             </a>
                         </div>
-                        <div class="boxx">
+                        <div class="box">
                             <form   action="#" th:action="@{/task/{id}/deleteTask (id=${task.getId()})}">
                                     <button  class="button button2" type="submit" >Удалить</button>
                             </form>

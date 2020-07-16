@@ -36,21 +36,22 @@ public class UpdateController {
     }
 
 
-    @GetMapping(value = {"/task/{id}/update"})
-    public String updateTaskForm(Model model, @PathVariable long id) {
-        TaskE task = taskRepository.findById(id).get();
+    @GetMapping(value = {"/task/{idt}/updateTask"})
+    public String updateTaskForm(Model model, @PathVariable long idt) {
+        TaskE task = taskRepository.findById(idt).get();
         model.addAttribute("task", task);
 
         return "/updateTask";
     }
 
-    @RequestMapping(value = {"/task/{id}/update"}, method = {RequestMethod.POST})
-    public String updateTaskSubmit(Model model, @PathVariable long id, @ModelAttribute("task") TaskE task) {
-        TaskE taskToUpdate = taskRepository.findById(id).get();
+    @RequestMapping(value = {"/task/{idt}/updateTask"}, method = {RequestMethod.POST})
+    public String updateTaskSubmit(Model model, @PathVariable long idt, @ModelAttribute("task") TaskE task) {
+        TaskE taskToUpdate = taskRepository.findById(idt).get();
         taskToUpdate.setTitle(task.getTitle());
+        taskToUpdate.setDone(task.getDone());
         taskRepository.save(taskToUpdate);
 
-        return "redirect:/task/" + taskToUpdate.getParentId();
+        return "redirect:/list/" + taskToUpdate.getParentId();
     }
 
 
